@@ -1,5 +1,6 @@
 package;
 
+import engine.Resources;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -27,7 +28,7 @@ class MenuState extends FlxState
 		background.screenCenter(XY);
 		add(background);
 
-		titleText = new FlxSprite(0, 0, AssetPaths.TitleText__png);
+		titleText = new FlxSprite(0, 0, Resources.TitleText__png);
 		titleText.scale.set(4, 4);
 		titleText.screenCenter(XY);
 		titleText.y -= FlxG.height / 3.5;

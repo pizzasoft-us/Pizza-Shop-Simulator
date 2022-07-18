@@ -1,5 +1,6 @@
 package;
 
+import engine.Resources;
 import engine.SessionStorage;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -31,8 +32,6 @@ class MainActivity extends FlxState
 	public override function create()
 	{
 		super.create();
-
-		Lib.current.removeChild(Lib.current.removeChild(new FPS(10, 10, 0xFFFFFFFF)));
 
 		background = new FlxSprite();
 		background.makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
@@ -68,21 +67,21 @@ class MainActivity extends FlxState
 		add(orderDescLine2);
 
 		// ingridients hud
-		doughIcon = new FlxSprite(0, 0);
-		doughIcon.screenCenter(Y);
-		doughIcon.y -= sauceIcon.height;
-		add(doughIcon);
-		sauceIcon = new FlxSprite(0, 0);
-		sauceIcon.screenCenter(Y);
-		sauceIcon.y -= sauceIcon.height / 2;
+		sauceIcon = new FlxSprite(0, 0, Resources.Sauce__png);
+		sauceIcon.y = ((FlxG.height / 2) - (sauceIcon.height / 2));
+		sauceIcon.y -= sauceIcon.height / 1.5;
 		add(sauceIcon);
-		cheeseIcon = new FlxSprite(0, 0);
-		cheeseIcon.screenCenter(Y);
-		cheeseIcon.y += cheeseIcon.height / 2;
+		doughIcon = new FlxSprite(0, 0, Resources.UncookedDough__png);
+		doughIcon.y = ((FlxG.height / 2) - (doughIcon.height / 2));
+		doughIcon.y -= doughIcon.height * 2;
+		add(doughIcon);
+		cheeseIcon = new FlxSprite(0, 0, Resources.Cheese__png);
+		cheeseIcon.y = ((FlxG.height / 2) - (cheeseIcon.height / 2));
+		cheeseIcon.y += cheeseIcon.height / 1.5;
 		add(cheeseIcon);
-		pepperoniIcon = new FlxSprite(0, 0);
-		pepperoniIcon.screenCenter(Y);
-		pepperoniIcon.y += cheeseIcon.height;
+		pepperoniIcon = new FlxSprite(0, 0, Resources.UncookedPepperoni__png);
+		pepperoniIcon.y = ((FlxG.height / 2) - (pepperoniIcon.height / 2));
+		pepperoniIcon.y += pepperoniIcon.height * 2;
 		add(pepperoniIcon);
 	}
 
