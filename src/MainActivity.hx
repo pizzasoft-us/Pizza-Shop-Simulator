@@ -20,6 +20,14 @@ class MainActivity extends FlxState
 	static var orderDescLine1:FlxText;
 	static var orderDescLine2:FlxText;
 
+	// ingridients hud
+	static var doughIcon:FlxSprite;
+	static var sauceIcon:FlxSprite;
+	static var cheeseIcon:FlxSprite;
+	static var pepperoniIcon:FlxSprite;
+
+	static var draggable:FlxSprite; // currently with a single cursor you can only drag one at a time so there is no point in having a draggable sprite for each ingredient
+
 	public override function create()
 	{
 		super.create();
@@ -58,6 +66,24 @@ class MainActivity extends FlxState
 		orderDescLine2.y = orderDescLine2.y;
 		orderDescLine2.visible = false;
 		add(orderDescLine2);
+
+		// ingridients hud
+		doughIcon = new FlxSprite(0, 0);
+		doughIcon.screenCenter(Y);
+		doughIcon.y -= sauceIcon.height;
+		add(doughIcon);
+		sauceIcon = new FlxSprite(0, 0);
+		sauceIcon.screenCenter(Y);
+		sauceIcon.y -= sauceIcon.height / 2;
+		add(sauceIcon);
+		cheeseIcon = new FlxSprite(0, 0);
+		cheeseIcon.screenCenter(Y);
+		cheeseIcon.y += cheeseIcon.height / 2;
+		add(cheeseIcon);
+		pepperoniIcon = new FlxSprite(0, 0);
+		pepperoniIcon.screenCenter(Y);
+		pepperoniIcon.y += cheeseIcon.height;
+		add(pepperoniIcon);
 	}
 
 	public override function update(dt:Float)
