@@ -37,6 +37,16 @@ class MainActivity extends FlxState
 		topping: null
 	};
 	static var oven:FlxSprite;
+	static var ovenBack:FlxSprite;
+	static var ovenRack:FlxSprite;
+
+	static var cookTime:Float = 0;
+	static var maxCookTime:Float = 15;
+	static var pizzaInOven:Bool = false;
+
+	static var finishTutorialButton:FlxText;
+
+	static var cookIndicator:FlxText;
 
 	public override function create()
 	{
@@ -118,6 +128,25 @@ class MainActivity extends FlxState
 		oven.screenCenter(XY);
 		oven.x += oven.width * 2;
 		add(oven);
+		ovenBack = new FlxSprite(0, 0, Resources.ovenresized_1__png);
+		ovenBack.x = oven.x;
+		ovenBack.y = oven.y;
+		add(ovenBack);
+		ovenRack = new FlxSprite(0, 0, Resources.panewithoutoverlayresized__png);
+		ovenRack.x = oven.x;
+		ovenRack.y = oven.y;
+		add(ovenRack);
+
+		finishTutorialButton = new FlxText(0, 0, 0, "Get started!").setFormat(null, 32, FlxColor.BLACK, CENTER);
+		finishTutorialButton.screenCenter(XY);
+		finishTutorialButton.y += FlxG.height / 4;
+		finishTutorialButton.visible = false;
+		add(finishTutorialButton);
+
+		cookIndicator = new FlxText(0, 0, 0, "error").setFormat(null, 32, FlxColor.BLACK, CENTER);
+		cookIndicator.x = oven.x + (oven.width / 2 - cookIndicator.width / 2);
+		cookIndicator.y = oven.y - cookIndicator.height * 2;
+		add(cookIndicator);
 	}
 
 	public override function update(dt:Float)
@@ -169,10 +198,39 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(currentPizza.base) && FlxG.mouse.justPressed)
 		{
-			currentPizza.base.visible = false;
-			currentPizza.topping.visible = false;
+			// currentPizza.base.visible = false;
+			// currentPizza.topping.visible = false;
 			dragHereHint.text = "Wait for your pizza to cook";
 			dragHereHint.screenCenter(X);
+			ovenRack.loadGraphic(Resources.ovenresized_5__png);
+			currentPizza.base.x = ovenRack.x + ovenRack.width / 4;
+			currentPizza.base.y = ovenRack.y + ovenRack.height / 1.5;
+			currentPizza.topping.x = ovenRack.x + ovenRack.width / 4;
+			currentPizza.topping.y = ovenRack.y + ovenRack.height / 1.5;
+			currentPizza.topping.visible = false;
+			pizzaInOven = true;
+		}
+
+		if (pizzaInOven)
+		{
+			cookTime += dt;
+			dragHereHint.text = "Your pizza is cooking (" + Math.round(maxCookTime - cookTime) + ")";
+			dragHereHint.screenCenter(X);
+		}
+
+		if (cookTime >= maxCookTime)
+		{
+			pizzaInOven = false;
+			ovenRack.loadGraphic(Resources.ovenresized_1__png);
+			dragHereHint.text = "Your pizza is done! Now try it without any hints.";
+			dragHereHint.screenCenter(X);
+			// move pizza to conveyor and tween it off screen
+		}
+
+		if (FlxG.mouse.overlaps(finishTutorialButton) && FlxG.mouse.justPressed)
+		{
+			SessionStorage.tutorialCompleted = true;
+			SessionStorage.saveDataToJSON();
 		}
 	}
 }
