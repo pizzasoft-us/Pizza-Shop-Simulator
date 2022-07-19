@@ -15,10 +15,12 @@ class SessionStorage
 	public static var netWorth:Float = 0.0;
 	public static var totalRevenue:Float = 0.0;
 	public static var totalSales:Int = 0;
+	public static var tutorialCompleted:Bool = false;
 
 	public static function initJSONStorage()
 	{
 		var jsonData = Json.stringify({
+			tutorialFinished: tutorialCompleted,
 			shop: {
 				name: shopName
 			},
@@ -55,6 +57,7 @@ class SessionStorage
 		netWorth = json.economy.self.nw;
 		totalRevenue = json.economy.shop.revenue;
 		totalSales = json.economy.shop.sales;
+		tutorialCompleted = json.tutorialFinished;
 		if (shopName == "")
 		{
 			trace("Data loaded however it is empty");
@@ -73,6 +76,7 @@ class SessionStorage
 		var fp = Path.join([System.applicationStorageDirectory, "data.json"]);
 		#if sys
 		var json = Json.stringify({
+			tutorialFinished: tutorialCompleted,
 			shop: {
 				name: shopName
 			},

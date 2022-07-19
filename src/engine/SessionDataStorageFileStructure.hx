@@ -2,6 +2,7 @@ package engine;
 
 typedef SessionDataStorageFileStructure =
 {
+	tutorialFinished:Bool,
 	shop:
 	{
 		name:String
