@@ -48,6 +48,8 @@ class MainActivity extends FlxState
 
 	static var cookIndicator:FlxText;
 
+	static var order:OrderDataStructure;
+
 	public override function create()
 	{
 		super.create();
@@ -84,6 +86,18 @@ class MainActivity extends FlxState
 		orderDescLine2.y = orderDescLine2.y;
 		orderDescLine2.visible = false;
 		add(orderDescLine2);
+
+		if (!SessionStorage.tutorialCompleted)
+		{
+			order = OrderGenerator.generateOrder();
+		}
+		else
+		{
+			order = {
+				customerName: Names.getNames()[0],
+				topping: Toppings.PEPPERONI
+			}
+		}
 
 		// ingridients hud
 		sauceIcon = new FlxSprite(0, 0, Resources.Sauce__png);
@@ -194,6 +208,7 @@ class MainActivity extends FlxState
 			tutorialArrow.visible = false;
 			dragHereHint.text = "Now move your pizza to the oven by clicking on it";
 			dragHereHint.screenCenter(X);
+			currentPizza.topping.health = 1;
 		}
 
 		if (FlxG.mouse.overlaps(currentPizza.base) && FlxG.mouse.justPressed)
@@ -224,6 +239,7 @@ class MainActivity extends FlxState
 			ovenRack.loadGraphic(Resources.ovenresized_1__png);
 			dragHereHint.text = "Your pizza is done! Now try it without any hints.";
 			dragHereHint.screenCenter(X);
+			finishTutorialButton.visible = true;
 			// move pizza to conveyor and tween it off screen
 		}
 
