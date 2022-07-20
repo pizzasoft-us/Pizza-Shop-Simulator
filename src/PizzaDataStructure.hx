@@ -8,6 +8,6 @@ typedef PizzaDataStructure =
 	topping:FlxSprite,
 	meta:
 	{
-		topping:Toppings
+		topping:Toppings, composition:Array<PizzaIngredients>
 	}
 }

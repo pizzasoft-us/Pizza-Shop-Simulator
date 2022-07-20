@@ -39,7 +39,8 @@ class MainActivity extends FlxState
 		base: new FlxSprite(),
 		topping: null,
 		meta: {
-			topping: null
+			topping: null,
+			composition: []
 		}
 	};
 	static var freezeBackupPizza:PizzaDataStructure;
@@ -59,6 +60,8 @@ class MainActivity extends FlxState
 
 	static var orderFeedback:FlxText;
 	static var button:FlxText;
+
+	static var lastIngredientAdded:PizzaIngredients;
 
 	public override function create()
 	{
@@ -206,28 +209,40 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(doughIcon) && FlxG.mouse.justPressed)
 		{
-			currentPizza.base.loadGraphic(Resources.UncookedDough__png);
-			currentPizza.base.visible = true;
-			dragHereHint.text = "Click on the sauce icon";
-			dragHereHint.screenCenter(X);
-			tutorialArrow.y = sauceIcon.y;
+			if (!pizzaInOven)
+			{
+				currentPizza.base.loadGraphic(Resources.UncookedDough__png);
+				currentPizza.base.visible = true;
+				dragHereHint.text = "Click on the sauce icon";
+				dragHereHint.screenCenter(X);
+				tutorialArrow.y = sauceIcon.y;
+				currentPizza.meta.composition.push(DOUGH);
+			}
 		}
 
 		if (FlxG.mouse.overlaps(sauceIcon) && FlxG.mouse.justPressed)
 		{
-			currentPizza.base.loadGraphic(Resources.UncookedDoughWithSauce__png);
-			dragHereHint.text = "Click on the cheese icon";
-			dragHereHint.screenCenter(X);
-			tutorialArrow.y = cheeseIcon.y;
+			if (!pizzaInOven)
+			{
+				currentPizza.base.loadGraphic(Resources.UncookedDoughWithSauce__png);
+				dragHereHint.text = "Click on the cheese icon";
+				dragHereHint.screenCenter(X);
+				tutorialArrow.y = cheeseIcon.y;
+				currentPizza.meta.composition.push(SAUCE);
+			}
 		}
 
 		if (FlxG.mouse.overlaps(cheeseIcon) && FlxG.mouse.justPressed)
 		{
-			currentPizza.base.loadGraphic(Resources.UncookedDoughWithSauceAndCheese__png);
-			dragHereHint.text = "Click on the pepperoni icon";
-			dragHereHint.screenCenter(X);
-			tutorialArrow.y = pepperoniIcon.y;
-			currentPizza.meta.topping = NONE;
+			if (!pizzaInOven)
+			{
+				currentPizza.base.loadGraphic(Resources.UncookedDoughWithSauceAndCheese__png);
+				dragHereHint.text = "Click on the pepperoni icon";
+				dragHereHint.screenCenter(X);
+				tutorialArrow.y = pepperoniIcon.y;
+				currentPizza.meta.topping = NONE;
+				currentPizza.meta.composition.push(CHEESE);
+			}
 		}
 
 		if (FlxG.mouse.overlaps(pepperoniIcon) && FlxG.mouse.justPressed)
@@ -246,19 +261,24 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(currentPizza.base) && FlxG.mouse.justPressed)
 		{
-			// currentPizza.base.visible = false;
-			// currentPizza.topping.visible = false;
-			dragHereHint.text = "Wait for your pizza to cook";
-			dragHereHint.screenCenter(X);
-			ovenRack.loadGraphic(Resources.ovenresized_5__png);
-			currentPizza.base.x = ovenRack.x + ovenRack.width / 4;
-			currentPizza.base.y = ovenRack.y + ovenRack.height / 1.5;
-			currentPizza.topping.x = ovenRack.x + ovenRack.width / 4;
-			currentPizza.topping.y = ovenRack.y + ovenRack.height / 1.5;
-			currentPizza.topping.visible = false;
-			pizzaInOven = true;
-			currentPizza.base.visible = false;
-			currentPizza.topping.visible = false;
+			if (currentPizza.meta.composition.contains(DOUGH)
+				&& currentPizza.meta.composition.contains(SAUCE)
+				&& currentPizza.meta.composition.contains(CHEESE))
+			{
+				// currentPizza.base.visible = false;
+				// currentPizza.topping.visible = false;
+				dragHereHint.text = "Wait for your pizza to cook";
+				dragHereHint.screenCenter(X);
+				ovenRack.loadGraphic(Resources.ovenresized_5__png);
+				currentPizza.base.x = ovenRack.x + ovenRack.width / 4;
+				currentPizza.base.y = ovenRack.y + ovenRack.height / 1.5;
+				currentPizza.topping.x = ovenRack.x + ovenRack.width / 4;
+				currentPizza.topping.y = ovenRack.y + ovenRack.height / 1.5;
+				currentPizza.topping.visible = false;
+				pizzaInOven = true;
+				currentPizza.base.visible = false;
+				currentPizza.topping.visible = false;
+			}
 		}
 
 		if (pizzaInOven)
