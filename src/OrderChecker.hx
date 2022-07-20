@@ -1,5 +1,7 @@
 package;
 
+using Toppings;
+
 class OrderChecker
 {
 	public static function verify(order:OrderDataStructure, creation:PizzaDataStructure):Bool
@@ -9,13 +11,11 @@ class OrderChecker
 		switch (order.topping)
 		{
 			case PEPPERONI:
-				topping1 = Toppings.PEPPERONI;
+				topping1 = PEPPERONI;
+			case NONE:
+				topping1 = NONE;
 		}
-		switch (creation.topping.health)
-		{
-			case 1:
-				topping2 = Toppings.PEPPERONI;
-		}
+		topping2 = creation.meta.topping;
 
 		if (topping1 == topping2)
 		{

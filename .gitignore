@@ -1,1 +1,19 @@
+# export dirs
 bin/
+export/
+
+# binaries
+*.exe
+*.dll
+*.AppImage
+*.deb
+*.flatpak
+*.app/
+
+# archives
+*.zip
+*.7z
+*.tar
+*.tar.gz
+*.tar.xz
+*.cab

@@ -1,5 +1,6 @@
 package;
 
+import lime.system.System;
 import engine.Resources;
 import engine.SessionStorage;
 import flixel.FlxG;
@@ -9,6 +10,8 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import openfl.Lib;
 import openfl.display.FPS;
+
+using Toppings;
 
 class MainActivity extends FlxState
 {
@@ -34,7 +37,10 @@ class MainActivity extends FlxState
 	static var dragHereHint:FlxText;
 	static var currentPizza:PizzaDataStructure = {
 		base: new FlxSprite(),
-		topping: null
+		topping: null,
+		meta: {
+			topping: null
+		}
 	};
 	static var oven:FlxSprite;
 	static var ovenBack:FlxSprite;
@@ -49,6 +55,9 @@ class MainActivity extends FlxState
 	static var cookIndicator:FlxText;
 
 	static var order:OrderDataStructure;
+
+	static var orderFeedback:FlxText;
+	static var button:FlxText;
 
 	public override function create()
 	{
@@ -217,6 +226,7 @@ class MainActivity extends FlxState
 			dragHereHint.text = "Click on the pepperoni icon";
 			dragHereHint.screenCenter(X);
 			tutorialArrow.y = pepperoniIcon.y;
+			currentPizza.meta.topping = NONE;
 		}
 
 		if (FlxG.mouse.overlaps(pepperoniIcon) && FlxG.mouse.justPressed)
@@ -230,7 +240,7 @@ class MainActivity extends FlxState
 			tutorialArrow.visible = false;
 			dragHereHint.text = "Now move your pizza to the oven by clicking on it";
 			dragHereHint.screenCenter(X);
-			currentPizza.topping.health = 1;
+			currentPizza.meta.topping = PEPPERONI;
 		}
 
 		if (FlxG.mouse.overlaps(currentPizza.base) && FlxG.mouse.justPressed)
@@ -268,6 +278,7 @@ class MainActivity extends FlxState
 			dragHereHint.text = "Your pizza is done! Now try it without any hints.";
 			dragHereHint.screenCenter(X);
 			finishTutorialButton.visible = true;
+			cookTime = 0;
 			if (SessionStorage.tutorialCompleted)
 			{
 				finishTutorialButton.text = "Next Order";
@@ -276,12 +287,19 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(finishTutorialButton) && FlxG.mouse.justPressed)
 		{
+			finishTutorialButton.visible = false;
 			if (!SessionStorage.tutorialCompleted)
 			{
 				SessionStorage.tutorialCompleted = true;
 				SessionStorage.saveDataToJSON();
 			}
-			FlxG.switchState(new NameYourShopState(false));
+			if (OrderChecker.verify(order, currentPizza))
+			{
+				SessionStorage.totalSales++;
+				SessionStorage.saveDataToJSON();
+				FlxG.switchState(new NameYourShopState(false));
+			}
+			else {}
 		}
 	}
 }
