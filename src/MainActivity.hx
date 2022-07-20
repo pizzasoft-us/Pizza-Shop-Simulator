@@ -59,7 +59,7 @@ class MainActivity extends FlxState
 	static var order:OrderDataStructure;
 
 	static var orderFeedback:FlxText;
-	static var button:FlxText;
+	static var acceptOrderFeedbackButton:FlxText;
 
 	static var lastIngredientAdded:PizzaIngredients = null;
 
@@ -201,6 +201,18 @@ class MainActivity extends FlxState
 		currentPizza.topping = new FlxSprite(0, 0, Resources.UncookedPepperoni__png);
 		currentPizza.topping.visible = false;
 		add(currentPizza.topping);
+
+		orderFeedback = new FlxText(0, 0, 0,
+			"Your customer, " + order.customerName + ", did not get what they ordered.").setFormat(Reference.FONT, 32, FlxColor.BLACK, CENTER);
+		orderFeedback.screenCenter(XY);
+		orderFeedback.y = FlxG.height - (orderFeedback.height * 3);
+		orderFeedback.visible = false;
+		add(orderFeedback);
+		acceptOrderFeedbackButton = new FlxText(0, 0, 0, "Next order").setFormat(Reference.FONT, 48, FlxColor.BLACK, CENTER);
+		acceptOrderFeedbackButton.screenCenter(XY);
+		acceptOrderFeedbackButton.y = FlxG.height - acceptOrderFeedbackButton.height;
+		acceptOrderFeedbackButton.visible = false;
+		add(acceptOrderFeedbackButton);
 	}
 
 	public override function update(dt:Float)
@@ -260,8 +272,8 @@ class MainActivity extends FlxState
 				// currentPizza.topping = new FlxSprite(0, 0, Resources.UncookedPepperoni__png);
 				currentPizza.topping.scale.set(4, 4);
 				currentPizza.topping.screenCenter(XY);
-				currentPizza.topping.x += 12;
-				currentPizza.topping.y += 8;
+				currentPizza.topping.x += 48;
+				currentPizza.topping.y += 32;
 				currentPizza.topping.visible = true;
 				tutorialArrow.visible = false;
 				dragHereHint.text = "Now move your pizza to the oven by clicking on it";
@@ -316,7 +328,7 @@ class MainActivity extends FlxState
 			cookTime = 0;
 			if (SessionStorage.tutorialCompleted)
 			{
-				finishTutorialButton.text = "Next Order";
+				finishTutorialButton.text = "Deliver Order";
 			}
 			// currentPizza.base.visible = true;
 			// currentPizza.topping.visible = true;
@@ -336,7 +348,16 @@ class MainActivity extends FlxState
 				SessionStorage.saveDataToJSON();
 				FlxG.switchState(new NameYourShopState(false));
 			}
-			else {}
+			else
+			{
+				orderFeedback.visible = true;
+				acceptOrderFeedbackButton.visible = true;
+			}
+		}
+
+		if (FlxG.mouse.overlaps(acceptOrderFeedbackButton) && FlxG.mouse.justPressed)
+		{
+			FlxG.switchState(new NameYourShopState(false));
 		}
 	}
 }
