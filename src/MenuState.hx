@@ -34,7 +34,7 @@ class MenuState extends FlxState
 		titleText.y -= FlxG.height / 3.5;
 		add(titleText);
 
-		playButton = new FlxText(0, 0, 0, "Play!").setFormat(null, 96, FlxColor.fromInt(0xFFFFFFFF), FlxTextAlign.CENTER);
+		playButton = new FlxText(0, 0, 0, "Play!").setFormat(Reference.FONT, 96, FlxColor.fromInt(0xFFFFFFFF), FlxTextAlign.CENTER);
 		playButton.screenCenter(XY);
 		add(playButton);
 	}

@@ -42,6 +42,7 @@ class MainActivity extends FlxState
 			topping: null
 		}
 	};
+	static var freezeBackupPizza:PizzaDataStructure;
 	static var oven:FlxSprite;
 	static var ovenBack:FlxSprite;
 	static var ovenRack:FlxSprite;
@@ -68,7 +69,7 @@ class MainActivity extends FlxState
 		background.screenCenter();
 		add(background);
 
-		titleText = new FlxText(0, 0, 0, "Loading shop name...").setFormat(null, 16, FlxColor.BLACK, CENTER);
+		titleText = new FlxText(0, 0, 0, "Loading shop name...").setFormat(Reference.FONT, 16, FlxColor.BLACK, CENTER);
 		try
 		{
 			titleText.text = SessionStorage.shopName + "'s kitchen";
@@ -81,16 +82,16 @@ class MainActivity extends FlxState
 
 		// order hud will be invisible until there is an order
 		// for testing, we will create an order at the beginning of the game
-		orderNotifyTitle = new FlxText(0, 0, 0, "New Order!").setFormat(null, 32, FlxColor.BLACK, CENTER);
+		orderNotifyTitle = new FlxText(0, 0, 0, "New Order!").setFormat(Reference.FONT, 32, FlxColor.BLACK, CENTER);
 		orderNotifyTitle.x = FlxG.width - orderNotifyTitle.width;
 		orderNotifyTitle.visible = false;
 		add(orderNotifyTitle);
-		orderDescLine1 = new FlxText(0, 0, 0, "Summary").setFormat(null, 24, FlxColor.BLACK, CENTER);
+		orderDescLine1 = new FlxText(0, 0, 0, "Summary").setFormat(Reference.FONT, 24, FlxColor.BLACK, CENTER);
 		orderDescLine1.x = FlxG.width - orderDescLine1.width;
 		orderDescLine1.y = orderNotifyTitle.height;
 		orderDescLine1.visible = false;
 		add(orderDescLine1);
-		orderDescLine2 = new FlxText(0, 0, 0, "Summary").setFormat(null, 24, FlxColor.BLACK, CENTER);
+		orderDescLine2 = new FlxText(0, 0, 0, "Summary").setFormat(Reference.FONT, 24, FlxColor.BLACK, CENTER);
 		orderDescLine2.x = FlxG.width - orderDescLine2.width;
 		orderDescLine2.y = orderDescLine1.y + orderDescLine1.height;
 		orderDescLine2.visible = false;
@@ -140,7 +141,7 @@ class MainActivity extends FlxState
 		pepperoniIcon.y = ((FlxG.height / 2) - (pepperoniIcon.height / 2));
 		pepperoniIcon.y += pepperoniIcon.height * 2;
 		add(pepperoniIcon);
-		tutorialArrow = new FlxText(0, 0, 0, "<-").setFormat(null, 24, FlxColor.BLACK, CENTER);
+		tutorialArrow = new FlxText(0, 0, 0, "<-").setFormat(Reference.FONT, 24, FlxColor.BLACK, CENTER);
 		tutorialArrow.x = sauceIcon.width;
 		tutorialArrow.y = doughIcon.y;
 
@@ -151,7 +152,7 @@ class MainActivity extends FlxState
 		add(tutorialArrow);
 
 		// work area
-		dragHereHint = new FlxText(0, 0, 0, "Click on the dough icon").setFormat(null, 32, FlxColor.BLACK, CENTER);
+		dragHereHint = new FlxText(0, 0, 0, "Click on the dough icon").setFormat(Reference.FONT, 32, FlxColor.BLACK, CENTER);
 		dragHereHint.screenCenter(XY);
 		dragHereHint.y -= dragHereHint.height * 4;
 		if (SessionStorage.tutorialCompleted)
@@ -178,13 +179,13 @@ class MainActivity extends FlxState
 		ovenRack.y = oven.y;
 		add(ovenRack);
 
-		finishTutorialButton = new FlxText(0, 0, 0, "Get started!").setFormat(null, 32, FlxColor.BLACK, CENTER);
+		finishTutorialButton = new FlxText(0, 0, 0, "Get started!").setFormat(Reference.FONT, 32, FlxColor.BLACK, CENTER);
 		finishTutorialButton.screenCenter(XY);
 		finishTutorialButton.y += FlxG.height / 4;
 		finishTutorialButton.visible = false;
 		add(finishTutorialButton);
 
-		cookIndicator = new FlxText(0, 0, 0, "error").setFormat(null, 32, FlxColor.BLACK, CENTER);
+		cookIndicator = new FlxText(0, 0, 0, "error").setFormat(Reference.FONT, 32, FlxColor.BLACK, CENTER);
 		cookIndicator.x = oven.x + (oven.width / 2 - cookIndicator.width / 2);
 		cookIndicator.y = oven.y - cookIndicator.height * 2;
 		add(cookIndicator);
@@ -285,8 +286,8 @@ class MainActivity extends FlxState
 			{
 				finishTutorialButton.text = "Next Order";
 			}
-			currentPizza.base.visible = true;
-			currentPizza.topping.visible = true;
+			// currentPizza.base.visible = true;
+			// currentPizza.topping.visible = true;
 		}
 
 		if (FlxG.mouse.overlaps(finishTutorialButton) && FlxG.mouse.justPressed)

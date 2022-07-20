@@ -31,7 +31,7 @@ class NameYourShopState extends FlxState
 			FlxG.switchState(new MainActivity());
 		}
 
-		titleText = new FlxText(0, 0, 0, "Name your shop:").setFormat(null, 72, FlxColor.fromInt(0xFFFFFFFF), FlxTextAlign.CENTER);
+		titleText = new FlxText(0, 0, 0, "Name your shop:").setFormat(Reference.FONT, 72, FlxColor.fromInt(0xFFFFFFFF), FlxTextAlign.CENTER);
 		titleText.screenCenter(X);
 		add(titleText);
 
@@ -39,7 +39,7 @@ class NameYourShopState extends FlxState
 		textInputField.screenCenter(XY);
 		add(textInputField);
 
-		nextButton = new FlxText(0, 0, 0, "Confirm").setFormat(null, 36, FlxColor.WHITE, CENTER);
+		nextButton = new FlxText(0, 0, 0, "Confirm").setFormat(Reference.FONT, 36, FlxColor.WHITE, CENTER);
 		nextButton.screenCenter(X);
 		nextButton.y = FlxG.height - (titleText.y + titleText.height);
 		add(nextButton);
