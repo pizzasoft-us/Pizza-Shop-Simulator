@@ -65,6 +65,10 @@ class MainActivity extends FlxState
 
 	static var freezeWorkspace:Bool = false;
 
+	// stat hud
+	static var salesIndicator:FlxText;
+	static var revenueIndicator:FlxText;
+
 	public override function create()
 	{
 		super.create();
@@ -213,11 +217,28 @@ class MainActivity extends FlxState
 		acceptOrderFeedbackButton.y = FlxG.height - acceptOrderFeedbackButton.height;
 		acceptOrderFeedbackButton.visible = false;
 		add(acceptOrderFeedbackButton);
+
+		// stat hud
+		salesIndicator = new FlxText(0, 0, 0, "0").setFormat(Reference.FONT, 32, FlxColor.BLACK, CENTER);
+		salesIndicator.screenCenter(X);
+		salesIndicator.x -= salesIndicator.width;
+		add(salesIndicator);
+		revenueIndicator = new FlxText(0, 0, 0, "0").setFormat(Reference.FONT, 32, FlxColor.BLACK, CENTER);
+		revenueIndicator.screenCenter(X);
+		revenueIndicator.x += revenueIndicator.width;
+		add(revenueIndicator);
 	}
 
 	public override function update(dt:Float)
 	{
 		super.update(dt);
+
+		salesIndicator.text = SessionStorage.totalSales + " sales";
+		revenueIndicator.text = SessionStorage.totalRevenue + " coins";
+		salesIndicator.screenCenter(X);
+		salesIndicator.x -= salesIndicator.width;
+		revenueIndicator.screenCenter(X);
+		revenueIndicator.x += revenueIndicator.width;
 
 		if (FlxG.mouse.overlaps(titleText) && FlxG.mouse.justPressed)
 		{
