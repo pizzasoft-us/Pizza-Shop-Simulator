@@ -22,6 +22,7 @@ class SessionStorage
 	public static function initJSONStorage()
 	{
 		var jsonData = Json.stringify({
+			version: 1,
 			tutorialFinished: tutorialCompleted,
 			shop: {
 				name: shopName,
