@@ -5,7 +5,7 @@ typedef SessionDataStorageFileStructure =
 	tutorialFinished:Bool,
 	shop:
 	{
-		name:String
+		name:String, basePrice:Float, toppingPrice:Float
 	},
 	economy:
 	{

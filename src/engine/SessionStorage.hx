@@ -16,13 +16,17 @@ class SessionStorage
 	public static var totalRevenue:Float = 0.0;
 	public static var totalSales:Int = 0;
 	public static var tutorialCompleted:Bool = false;
+	public static var cheesePizzaPrice:Float = 0.0;
+	public static var pricePerTopping:Float = 0.0;
 
 	public static function initJSONStorage()
 	{
 		var jsonData = Json.stringify({
 			tutorialFinished: tutorialCompleted,
 			shop: {
-				name: shopName
+				name: shopName,
+				basePrice: cheesePizzaPrice,
+				toppingPrice: pricePerTopping
 			},
 			economy: {
 				self: {
@@ -58,6 +62,8 @@ class SessionStorage
 		totalRevenue = json.economy.shop.revenue;
 		totalSales = json.economy.shop.sales;
 		tutorialCompleted = json.tutorialFinished;
+		cheesePizzaPrice = json.shop.basePrice;
+		pricePerTopping = json.shop.toppingPrice;
 		if (shopName == "")
 		{
 			trace("Data loaded however it is empty");
@@ -78,7 +84,9 @@ class SessionStorage
 		var json = Json.stringify({
 			tutorialFinished: tutorialCompleted,
 			shop: {
-				name: shopName
+				name: shopName,
+				basePrice: cheesePizzaPrice,
+				toppingPrice: pricePerTopping
 			},
 			economy: {
 				self: {

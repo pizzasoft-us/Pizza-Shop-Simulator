@@ -345,6 +345,11 @@ class MainActivity extends FlxState
 			if (OrderChecker.verify(order, currentPizza))
 			{
 				SessionStorage.totalSales++;
+				SessionStorage.totalRevenue += SessionStorage.cheesePizzaPrice;
+				if (order.topping == PEPPERONI)
+				{
+					SessionStorage.totalRevenue += SessionStorage.pricePerTopping;
+				}
 				SessionStorage.saveDataToJSON();
 				FlxG.switchState(new NameYourShopState(false));
 			}

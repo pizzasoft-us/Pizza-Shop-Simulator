@@ -13,6 +13,12 @@ class NameYourShopState extends FlxState
 	static var textInputField:FlxInputText;
 	static var nextButton:FlxText;
 
+	static var basePriceText:FlxText;
+	static var basePriceField:FlxInputText;
+
+	static var toppingPriceText:FlxText;
+	static var toppingPriceField:FlxInputText;
+
 	static var bypass:Bool = false;
 
 	public function new(bp:Bool)
@@ -43,6 +49,26 @@ class NameYourShopState extends FlxState
 		nextButton.screenCenter(X);
 		nextButton.y = FlxG.height - (titleText.y + titleText.height);
 		add(nextButton);
+
+		basePriceText = new FlxText(0, 0, 0, "Pizza Price").setFormat(Reference.FONT, 36);
+		basePriceText.screenCenter(XY);
+		basePriceText.y += FlxG.height / 4;
+		basePriceText.x -= FlxG.width / 4;
+		add(basePriceText);
+		basePriceField = new FlxInputText(0, 0, Std.int(FlxG.width / 10), "16", 48);
+		basePriceField.y = basePriceText.y + basePriceField.height;
+		basePriceField.x = basePriceText.x;
+		add(basePriceField);
+
+		toppingPriceText = new FlxText(0, 0, 0, "Topping Price").setFormat(Reference.FONT, 36);
+		toppingPriceText.screenCenter(XY);
+		toppingPriceText.y += FlxG.height / 4;
+		toppingPriceText.x += FlxG.width / 4;
+		add(toppingPriceText);
+		toppingPriceField = new FlxInputText(0, 0, Std.int(FlxG.width / 10), "4", 48);
+		toppingPriceField.y = toppingPriceText.y + toppingPriceField.height;
+		toppingPriceField.x = toppingPriceText.x;
+		add(toppingPriceField);
 	}
 
 	public override function update(dt:Float)
@@ -55,7 +81,8 @@ class NameYourShopState extends FlxState
 			if (FlxG.mouse.justPressed)
 			{
 				SessionStorage.shopName = textInputField.textField.text;
-				trace(SessionStorage.shopName);
+				SessionStorage.cheesePizzaPrice = Std.parseInt(basePriceField.textField.text);
+				SessionStorage.pricePerTopping = Std.parseInt(toppingPriceField.textField.text);
 				SessionStorage.saveDataToJSON();
 				FlxG.switchState(new MainActivity());
 			}
