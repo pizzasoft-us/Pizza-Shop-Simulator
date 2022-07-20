@@ -17,7 +17,7 @@ class SessionStorage
 	public static var totalSales:Int = 0;
 	public static var tutorialCompleted:Bool = false;
 	public static var cheesePizzaPrice:Float = 16.0;
-	public static var pricePerTopping:Float = 8.0;
+	public static var pricePerTopping:Float = 4.0;
 
 	public static function initJSONStorage()
 	{
