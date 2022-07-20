@@ -256,6 +256,8 @@ class MainActivity extends FlxState
 			currentPizza.topping.y = ovenRack.y + ovenRack.height / 1.5;
 			currentPizza.topping.visible = false;
 			pizzaInOven = true;
+			currentPizza.base.visible = false;
+			currentPizza.topping.visible = false;
 		}
 
 		if (pizzaInOven)
@@ -283,6 +285,8 @@ class MainActivity extends FlxState
 			{
 				finishTutorialButton.text = "Next Order";
 			}
+			currentPizza.base.visible = true;
+			currentPizza.topping.visible = true;
 		}
 
 		if (FlxG.mouse.overlaps(finishTutorialButton) && FlxG.mouse.justPressed)
