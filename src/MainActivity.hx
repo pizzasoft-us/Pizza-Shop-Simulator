@@ -63,6 +63,8 @@ class MainActivity extends FlxState
 
 	static var lastIngredientAdded:PizzaIngredients = null;
 
+	static var freezeWorkspace:Bool = false;
+
 	public override function create()
 	{
 		super.create();
@@ -71,6 +73,9 @@ class MainActivity extends FlxState
 		background.makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
 		background.screenCenter();
 		add(background);
+
+		lastIngredientAdded = null;
+		freezeWorkspace = false;
 
 		titleText = new FlxText(0, 0, 0, "Loading shop name...").setFormat(Reference.FONT, 16, FlxColor.BLACK, CENTER);
 		try
@@ -209,7 +214,7 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(doughIcon) && FlxG.mouse.justPressed)
 		{
-			if (!pizzaInOven && lastIngredientAdded == null)
+			if (!pizzaInOven && !freezeWorkspace && lastIngredientAdded == null)
 			{
 				currentPizza.base.loadGraphic(Resources.UncookedDough__png);
 				currentPizza.base.visible = true;
@@ -223,7 +228,7 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(sauceIcon) && FlxG.mouse.justPressed)
 		{
-			if (!pizzaInOven && lastIngredientAdded == DOUGH)
+			if (!pizzaInOven && !freezeWorkspace && lastIngredientAdded == DOUGH)
 			{
 				currentPizza.base.loadGraphic(Resources.UncookedDoughWithSauce__png);
 				dragHereHint.text = "Click on the cheese icon";
@@ -236,7 +241,7 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(cheeseIcon) && FlxG.mouse.justPressed)
 		{
-			if (!pizzaInOven && lastIngredientAdded == SAUCE)
+			if (!pizzaInOven && !freezeWorkspace && lastIngredientAdded == SAUCE)
 			{
 				currentPizza.base.loadGraphic(Resources.UncookedDoughWithSauceAndCheese__png);
 				dragHereHint.text = "Click on the pepperoni icon";
@@ -250,7 +255,7 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(pepperoniIcon) && FlxG.mouse.justPressed)
 		{
-			if (!pizzaInOven && lastIngredientAdded == CHEESE)
+			if (!pizzaInOven && !freezeWorkspace && lastIngredientAdded == CHEESE)
 			{
 				// currentPizza.topping = new FlxSprite(0, 0, Resources.UncookedPepperoni__png);
 				currentPizza.topping.scale.set(4, 4);
@@ -284,6 +289,7 @@ class MainActivity extends FlxState
 				pizzaInOven = true;
 				currentPizza.base.visible = false;
 				currentPizza.topping.visible = false;
+				freezeWorkspace = true;
 			}
 		}
 
