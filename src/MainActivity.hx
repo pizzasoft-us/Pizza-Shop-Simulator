@@ -54,6 +54,8 @@ class MainActivity extends FlxState
 	{
 		super.create();
 
+		trace("works here");
+
 		background = new FlxSprite();
 		background.makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
 		background.screenCenter();
@@ -78,26 +80,41 @@ class MainActivity extends FlxState
 		add(orderNotifyTitle);
 		orderDescLine1 = new FlxText(0, 0, 0, "Summary").setFormat(null, 24, FlxColor.BLACK, CENTER);
 		orderDescLine1.x = FlxG.width - orderDescLine1.width;
-		orderDescLine1.y = orderDescLine1.y;
+		orderDescLine1.y = orderNotifyTitle.height;
 		orderDescLine1.visible = false;
 		add(orderDescLine1);
 		orderDescLine2 = new FlxText(0, 0, 0, "Summary").setFormat(null, 24, FlxColor.BLACK, CENTER);
 		orderDescLine2.x = FlxG.width - orderDescLine2.width;
-		orderDescLine2.y = orderDescLine2.y;
+		orderDescLine2.y = orderDescLine1.y + orderDescLine1.height;
 		orderDescLine2.visible = false;
 		add(orderDescLine2);
 
-		if (!SessionStorage.tutorialCompleted)
+		if (SessionStorage.tutorialCompleted)
 		{
 			order = OrderGenerator.generateOrder();
 		}
 		else
 		{
 			order = {
-				customerName: Names.getNames()[0],
+				customerName: Names.getNames()[Random.int(0, Names.getNames().length)],
 				topping: Toppings.PEPPERONI
 			}
 		}
+
+		orderDescLine1.text = "Order from " + order.customerName;
+		switch (order.topping)
+		{
+			case NONE:
+				orderDescLine2.text = "Cheese pizza";
+			case PEPPERONI:
+				orderDescLine2.text = "Pepperoni pizza";
+		}
+		orderNotifyTitle.x = FlxG.width - orderNotifyTitle.width;
+		orderDescLine1.x = FlxG.width - orderDescLine1.width;
+		orderDescLine2.x = FlxG.width - orderDescLine2.width;
+		orderNotifyTitle.visible = true;
+		orderDescLine1.visible = true;
+		orderDescLine2.visible = true;
 
 		// ingridients hud
 		sauceIcon = new FlxSprite(0, 0, Resources.Sauce__png);
@@ -119,6 +136,7 @@ class MainActivity extends FlxState
 		tutorialArrow = new FlxText(0, 0, 0, "<-").setFormat(null, 24, FlxColor.BLACK, CENTER);
 		tutorialArrow.x = sauceIcon.width;
 		tutorialArrow.y = doughIcon.y;
+
 		if (SessionStorage.tutorialCompleted)
 		{
 			tutorialArrow.visible = false;
@@ -161,6 +179,10 @@ class MainActivity extends FlxState
 		cookIndicator.x = oven.x + (oven.width / 2 - cookIndicator.width / 2);
 		cookIndicator.y = oven.y - cookIndicator.height * 2;
 		add(cookIndicator);
+
+		currentPizza.topping = new FlxSprite(0, 0, Resources.UncookedPepperoni__png);
+		currentPizza.topping.visible = false;
+		add(currentPizza.topping);
 	}
 
 	public override function update(dt:Float)
@@ -199,12 +221,12 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(pepperoniIcon) && FlxG.mouse.justPressed)
 		{
-			currentPizza.topping = new FlxSprite(0, 0, Resources.UncookedPepperoni__png);
+			// currentPizza.topping = new FlxSprite(0, 0, Resources.UncookedPepperoni__png);
 			currentPizza.topping.scale.set(4, 4);
 			currentPizza.topping.screenCenter(XY);
 			currentPizza.topping.x += 12;
 			currentPizza.topping.y += 8;
-			add(currentPizza.topping);
+			currentPizza.topping.visible = true;
 			tutorialArrow.visible = false;
 			dragHereHint.text = "Now move your pizza to the oven by clicking on it";
 			dragHereHint.screenCenter(X);
@@ -231,6 +253,12 @@ class MainActivity extends FlxState
 			cookTime += dt;
 			dragHereHint.text = "Your pizza is cooking (" + Math.round(maxCookTime - cookTime) + ")";
 			dragHereHint.screenCenter(X);
+			cookIndicator.visible = true;
+			cookIndicator.text = "" + Math.round(maxCookTime - cookTime);
+		}
+		else
+		{
+			cookIndicator.visible = false;
 		}
 
 		if (cookTime >= maxCookTime)
@@ -240,13 +268,19 @@ class MainActivity extends FlxState
 			dragHereHint.text = "Your pizza is done! Now try it without any hints.";
 			dragHereHint.screenCenter(X);
 			finishTutorialButton.visible = true;
-			// move pizza to conveyor and tween it off screen
+			if (SessionStorage.tutorialCompleted)
+			{
+				finishTutorialButton.text = "Next Order";
+			}
 		}
 
 		if (FlxG.mouse.overlaps(finishTutorialButton) && FlxG.mouse.justPressed)
 		{
+			trace("works here");
 			SessionStorage.tutorialCompleted = true;
 			SessionStorage.saveDataToJSON();
+			FlxG.switchState(new NameYourShopState(false));
+			trace("works here");
 		}
 	}
 }
