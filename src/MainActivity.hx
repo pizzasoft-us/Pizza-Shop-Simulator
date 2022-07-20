@@ -54,8 +54,6 @@ class MainActivity extends FlxState
 	{
 		super.create();
 
-		trace("works here");
-
 		background = new FlxSprite();
 		background.makeGraphic(FlxG.width, FlxG.height, FlxColor.WHITE);
 		background.screenCenter();
@@ -152,6 +150,8 @@ class MainActivity extends FlxState
 			dragHereHint.visible = false;
 		}
 		add(dragHereHint);
+
+		currentPizza.base = new FlxSprite();
 		currentPizza.base.screenCenter(XY);
 		currentPizza.base.scale.set(4, 4);
 		currentPizza.base.visible = false;
@@ -276,11 +276,12 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(finishTutorialButton) && FlxG.mouse.justPressed)
 		{
-			trace("works here");
-			SessionStorage.tutorialCompleted = true;
-			SessionStorage.saveDataToJSON();
+			if (!SessionStorage.tutorialCompleted)
+			{
+				SessionStorage.tutorialCompleted = true;
+				SessionStorage.saveDataToJSON();
+			}
 			FlxG.switchState(new NameYourShopState(false));
-			trace("works here");
 		}
 	}
 }

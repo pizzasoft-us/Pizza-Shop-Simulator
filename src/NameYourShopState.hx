@@ -25,8 +25,6 @@ class NameYourShopState extends FlxState
 	{
 		super.create();
 
-		trace("works here");
-
 		SessionStorage.loadDataFromJSON();
 		if (SessionStorage.shopName != "" && !bypass)
 		{
