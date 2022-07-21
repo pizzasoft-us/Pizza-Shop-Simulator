@@ -20,9 +20,6 @@
           <fxchain enabled="0" numofeffects="0"/>
         </instrumenttrack>
         <pattern type="1" muted="0" name="TripleOscillator" pos="0" steps="16">
-          <note key="62" len="192" vol="100" pan="0" pos="0"/>
-        </pattern>
-        <pattern type="1" muted="0" name="TripleOscillator" pos="192" steps="16">
           <note key="53" len="60" vol="100" pan="0" pos="0"/>
           <note key="53" len="72" vol="100" pan="0" pos="72"/>
           <note key="53" len="24" vol="100" pan="0" pos="156"/>
@@ -32,7 +29,7 @@
           <note key="53" len="24" vol="100" pan="0" pos="540"/>
           <note key="59" len="204" vol="100" pan="0" pos="564"/>
         </pattern>
-        <pattern type="1" muted="0" name="TripleOscillator" pos="960" steps="16">
+        <pattern type="1" muted="0" name="TripleOscillator" pos="768" steps="16">
           <note key="53" len="60" vol="100" pan="0" pos="0"/>
           <note key="53" len="72" vol="100" pan="0" pos="72"/>
           <note key="53" len="24" vol="100" pan="0" pos="156"/>
@@ -45,7 +42,7 @@
       </track>
       <track solo="0" type="1" muted="0" name="Beat/Bassline 0">
         <bbtrack>
-          <trackcontainer y="23" minimized="0" type="bbtrackcontainer" x="233" height="400" visible="1" width="944" maximized="0">
+          <trackcontainer y="21" minimized="0" type="bbtrackcontainer" x="-41" height="400" visible="0" width="944" maximized="0">
             <track solo="0" type="0" muted="0" name="Kicker">
               <instrumenttrack fxch="0" usemasterpitch="1" pitch="0" basenote="57" vol="100" pitchrange="1" pan="0">
                 <instrument name="kicker">
@@ -74,7 +71,7 @@
       <track solo="0" type="5" muted="0" name="Automation track">
         <automationtrack/>
       </track>
-      <track solo="0" type="0" muted="0" name="FreeBoy">
+      <track y="0" minimized="0" solo="0" type="0" x="0" height="458" visible="1" muted="0" width="258" name="FreeBoy" tab="0" maximized="0">
         <instrumenttrack fxch="0" usemasterpitch="1" pitch="0" basenote="57" vol="200" pitchrange="1" pan="0">
           <instrument name="papu">
             <papu ch1vol="15" ch3so2="1" ch3vol="3" so2vol="7" so1vol="7" ch1wpd="2" ch4vol="15" ch4so1="0" ch4vsd="0" ch2ssl="0" ch2vsd="0" ch4ssl="0" sd="0" st="4" srs="4" ch1ssl="0" ch1vsd="0" ch1so2="1" ch3so1="1" ch2wpd="2" ch2vol="15" ch2so2="1" ch4so2="0" ch2so1="1" srw="0" sampleShape="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" ch1so1="1" Treble="-20" Bass="461"/>

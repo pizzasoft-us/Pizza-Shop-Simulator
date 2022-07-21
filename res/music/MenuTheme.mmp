@@ -5,7 +5,7 @@
   <song>
     <trackcontainer y="6" minimized="0" type="song" x="18" height="300" visible="1" width="600" maximized="0">
       <track solo="0" type="0" muted="0" name="TripleOscillator">
-        <instrumenttrack fxch="0" usemasterpitch="1" pitch="0" basenote="57" vol="100" pitchrange="1" pan="0">
+        <instrumenttrack fxch="0" usemasterpitch="1" pitch="0" basenote="57" vol="62.4" pitchrange="1" pan="0">
           <instrument name="tripleoscillator">
             <tripleoscillator modalgo1="2" finer0="0" modalgo2="2" phoffset1="0" coarse1="-12" userwavefile1="" userwavefile0="" modalgo3="2" coarse0="0" stphdetun0="0" stphdetun2="0" coarse2="-24" finel1="0" vol0="33" finel2="0" userwavefile2="" pan0="0" vol1="33" pan1="0" pan2="0" vol2="33" finer1="0" stphdetun1="0" phoffset2="0" phoffset0="0" finer2="0" wavetype2="2" finel0="0" wavetype0="1" wavetype1="3"/>
           </instrument>
@@ -20,9 +20,6 @@
           <fxchain enabled="0" numofeffects="0"/>
         </instrumenttrack>
         <pattern type="1" muted="0" name="TripleOscillator" pos="0" steps="16">
-          <note key="62" len="192" vol="100" pan="0" pos="0"/>
-        </pattern>
-        <pattern type="1" muted="0" name="TripleOscillator" pos="192" steps="16">
           <note key="53" len="60" vol="100" pan="0" pos="0"/>
           <note key="53" len="72" vol="100" pan="0" pos="72"/>
           <note key="53" len="24" vol="100" pan="0" pos="156"/>
@@ -32,7 +29,7 @@
           <note key="53" len="24" vol="100" pan="0" pos="540"/>
           <note key="59" len="204" vol="100" pan="0" pos="564"/>
         </pattern>
-        <pattern type="1" muted="0" name="TripleOscillator" pos="960" steps="16">
+        <pattern type="1" muted="0" name="TripleOscillator" pos="768" steps="16">
           <note key="53" len="60" vol="100" pan="0" pos="0"/>
           <note key="53" len="72" vol="100" pan="0" pos="72"/>
           <note key="53" len="24" vol="100" pan="0" pos="156"/>
@@ -73,11 +70,17 @@
       </track>
       <track solo="0" type="5" muted="0" name="Automation track">
         <automationtrack/>
+        <automationpattern mute="0" tens="1" len="192" prog="0" name="Drag a control while pressing &lt;Ctrl>" pos="0"/>
+        <automationpattern mute="0" tens="1" len="192" prog="0" name="Drag a control while pressing &lt;Ctrl>" pos="768">
+          <time value="0" pos="0"/>
+          <time value="1" pos="384"/>
+        </automationpattern>
       </track>
-      <track y="0" minimized="0" solo="0" type="0" x="0" height="458" visible="1" muted="0" width="258" name="FreeBoy" tab="0" maximized="0">
-        <instrumenttrack fxch="0" usemasterpitch="1" pitch="0" basenote="57" vol="200" pitchrange="1" pan="0">
-          <instrument name="papu">
-            <papu ch1vol="15" ch3so2="1" ch3vol="3" so2vol="7" so1vol="7" ch1wpd="2" ch4vol="15" ch4so1="0" ch4vsd="0" ch2ssl="0" ch2vsd="0" ch4ssl="0" sd="0" st="4" srs="4" ch1ssl="0" ch1vsd="0" ch1so2="1" ch3so1="1" ch2wpd="2" ch2vol="15" ch2so2="1" ch4so2="0" ch2so1="1" srw="0" sampleShape="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=" ch1so1="1" Treble="-20" Bass="461"/>
+      <track y="0" minimized="0" solo="0" type="0" x="0" height="458" visible="1" muted="0" width="258" name="BitInvader" tab="0" maximized="0">
+        <instrumenttrack fxch="0" usemasterpitch="1" pitch="0" basenote="57" vol="30.4" pitchrange="1">
+          <pan id="7936837" value="100" scale_type="linear"/>
+          <instrument name="bitinvader">
+            <bitinvader sampleShape="AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIA/AACAPwAAgD8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8AAIC/AACAvwAAgL8=" interpolation="0" normalize="0" sampleLength="128" version="0.1"/>
           </instrument>
           <eldata ftype="0" fcut="14000" fres="0.5" fwet="0">
             <elvol lspd_denominator="4" hold="0.5" userwavefile="" lamt="0" ctlenvamt="0" rel="0.1" latt="0" lshp="0" dec="0.5" amt="0" lspd_syncmode="0" att="0" sustain="0.5" lspd_numerator="4" lspd="0.1" x100="0" pdel="0" lpdel="0"/>
@@ -89,6 +92,153 @@
           <midiport outputprogram="1" basevelocity="63" inputchannel="0" outputcontroller="0" outputchannel="1" writable="0" inputcontroller="0" fixedinputvelocity="-1" fixedoutputvelocity="-1" fixedoutputnote="-1" readable="0"/>
           <fxchain enabled="0" numofeffects="0"/>
         </instrumenttrack>
+        <pattern type="1" muted="0" name="BitInvader" pos="0" steps="16">
+          <note key="41" len="12" vol="100" pan="0" pos="0"/>
+          <note key="41" len="12" vol="100" pan="0" pos="24"/>
+          <note key="41" len="12" vol="100" pan="0" pos="72"/>
+          <note key="41" len="12" vol="100" pan="0" pos="96"/>
+          <note key="41" len="12" vol="100" pan="0" pos="144"/>
+          <note key="40" len="12" vol="100" pan="0" pos="168"/>
+          <note key="40" len="12" vol="100" pan="0" pos="216"/>
+          <note key="40" len="12" vol="100" pan="0" pos="240"/>
+          <note key="40" len="12" vol="100" pan="0" pos="288"/>
+          <note key="40" len="12" vol="100" pan="0" pos="312"/>
+          <note key="40" len="12" vol="100" pan="0" pos="360"/>
+          <note key="41" len="12" vol="100" pan="0" pos="384"/>
+          <note key="41" len="12" vol="100" pan="0" pos="408"/>
+          <note key="41" len="12" vol="100" pan="0" pos="456"/>
+          <note key="41" len="12" vol="100" pan="0" pos="480"/>
+          <note key="41" len="12" vol="100" pan="0" pos="528"/>
+          <note key="47" len="12" vol="100" pan="0" pos="552"/>
+          <note key="47" len="12" vol="100" pan="0" pos="600"/>
+          <note key="47" len="12" vol="100" pan="0" pos="624"/>
+          <note key="47" len="12" vol="100" pan="0" pos="672"/>
+          <note key="47" len="12" vol="100" pan="0" pos="696"/>
+          <note key="47" len="12" vol="100" pan="0" pos="744"/>
+        </pattern>
+        <pattern type="1" muted="0" name="BitInvader" pos="768" steps="16">
+          <note key="41" len="12" vol="100" pan="0" pos="0"/>
+          <note key="41" len="12" vol="100" pan="0" pos="24"/>
+          <note key="41" len="12" vol="100" pan="0" pos="72"/>
+          <note key="41" len="12" vol="100" pan="0" pos="96"/>
+          <note key="41" len="12" vol="100" pan="0" pos="144"/>
+          <note key="40" len="12" vol="100" pan="0" pos="168"/>
+          <note key="40" len="12" vol="100" pan="0" pos="216"/>
+          <note key="40" len="12" vol="100" pan="0" pos="240"/>
+          <note key="40" len="12" vol="100" pan="0" pos="288"/>
+          <note key="40" len="12" vol="100" pan="0" pos="312"/>
+          <note key="40" len="12" vol="100" pan="0" pos="360"/>
+          <note key="41" len="12" vol="100" pan="0" pos="384"/>
+          <note key="41" len="12" vol="100" pan="0" pos="408"/>
+          <note key="41" len="12" vol="100" pan="0" pos="456"/>
+          <note key="41" len="12" vol="100" pan="0" pos="480"/>
+          <note key="41" len="12" vol="100" pan="0" pos="528"/>
+          <note key="47" len="12" vol="100" pan="0" pos="552"/>
+          <note key="47" len="12" vol="100" pan="0" pos="600"/>
+          <note key="47" len="12" vol="100" pan="0" pos="624"/>
+          <note key="47" len="12" vol="100" pan="0" pos="672"/>
+          <note key="47" len="12" vol="100" pan="0" pos="696"/>
+          <note key="47" len="12" vol="100" pan="0" pos="744"/>
+        </pattern>
+      </track>
+      <track solo="0" type="0" muted="0" name="SID">
+        <instrumenttrack fxch="0" usemasterpitch="1" pitch="0" basenote="57" vol="0" pitchrange="1" pan="0">
+          <instrument name="sid">
+            <sid filtered2="0" filterResonance="0" test2="0" filterMode="2" attack2="8" pulsewidth0="2048" ringmod1="0" coarse0="0" release0="8" pulsewidth2="2048" coarse2="0" sync0="0" volume="15" waveform1="3" filtered0="0" release2="8" ringmod0="0" sustain1="9" waveform0="3" coarse1="0" pulsewidth1="2048" sync2="0" release1="8" attack0="8" filtered1="0" waveform2="3" filterFC="2047" sync1="0" sustain2="9" ringmod2="0" decay2="0" decay1="0" attack1="8" chipModel="1" sustain0="9" decay0="0" test1="0" voice3Off="0" test0="0"/>
+          </instrument>
+          <eldata ftype="0" fcut="14000" fres="0.5" fwet="0">
+            <elvol lspd_denominator="4" hold="0.5" userwavefile="" lamt="0" ctlenvamt="0" rel="0.1" latt="0" lshp="0" dec="0.5" amt="1" lspd_syncmode="0" att="0" sustain="0.5" lspd_numerator="4" lspd="0.1" x100="0" pdel="0" lpdel="0"/>
+            <elcut lspd_denominator="4" hold="0.5" userwavefile="" lamt="0" ctlenvamt="0" rel="0.1" latt="0" lshp="0" dec="0.5" amt="0" lspd_syncmode="0" att="0" sustain="0.5" lspd_numerator="4" lspd="0.1" x100="0" pdel="0" lpdel="0"/>
+            <elres lspd_denominator="4" hold="0" userwavefile="" lamt="0" ctlenvamt="0" rel="0.1" latt="0" lshp="0" dec="0" amt="0" lspd_syncmode="0" att="0" sustain="0" lspd_numerator="4" lspd="0.1" x100="0" pdel="0" lpdel="0"/>
+          </eldata>
+          <chordcreator chordrange="1" chord="0" chord-enabled="0"/>
+          <arpeggiator arpcycle="0" arpmode="0" arp-enabled="0" arpskip="0" arpmiss="0" arprange="1" arpdir="0" arptime_syncmode="0" arptime_denominator="4" arptime="200" arptime_numerator="4" arpgate="100" arp="0"/>
+          <midiport outputprogram="1" basevelocity="63" inputchannel="0" outputcontroller="0" outputchannel="1" writable="0" inputcontroller="0" fixedinputvelocity="-1" fixedoutputvelocity="-1" fixedoutputnote="-1" readable="0"/>
+          <fxchain enabled="1" numofeffects="1">
+            <effect autoquit="1" on="1" autoquit_denominator="4" autoquit_numerator="4" autoquit_syncmode="0" wet="1" name="ladspaeffect" gate="0">
+              <ladspacontrols ports="2" link="1">
+                <port00 link="1" data="3"/>
+                <port10 data="3"/>
+              </ladspacontrols>
+              <key>
+                <attribute value="chebstortion_1430" name="file"/>
+                <attribute value="chebstortion" name="plugin"/>
+              </key>
+            </effect>
+          </fxchain>
+        </instrumenttrack>
+        <pattern type="1" muted="0" name="SID" pos="0" steps="16">
+          <note key="47" len="12" vol="100" pan="0" pos="0"/>
+          <note key="36" len="12" vol="100" pan="0" pos="24"/>
+          <note key="36" len="12" vol="100" pan="0" pos="48"/>
+          <note key="47" len="12" vol="100" pan="0" pos="72"/>
+          <note key="36" len="12" vol="100" pan="0" pos="96"/>
+          <note key="36" len="12" vol="100" pan="0" pos="120"/>
+          <note key="47" len="12" vol="100" pan="0" pos="144"/>
+          <note key="36" len="12" vol="100" pan="0" pos="168"/>
+          <note key="36" len="12" vol="100" pan="0" pos="192"/>
+          <note key="47" len="12" vol="100" pan="0" pos="216"/>
+          <note key="36" len="12" vol="100" pan="0" pos="240"/>
+          <note key="36" len="12" vol="100" pan="0" pos="264"/>
+          <note key="47" len="12" vol="100" pan="0" pos="288"/>
+          <note key="36" len="12" vol="100" pan="0" pos="312"/>
+          <note key="47" len="12" vol="100" pan="0" pos="336"/>
+          <note key="36" len="12" vol="100" pan="0" pos="360"/>
+        </pattern>
+        <pattern type="1" muted="0" name="SID" pos="384" steps="16">
+          <note key="47" len="12" vol="100" pan="0" pos="0"/>
+          <note key="36" len="12" vol="100" pan="0" pos="24"/>
+          <note key="36" len="12" vol="100" pan="0" pos="48"/>
+          <note key="47" len="12" vol="100" pan="0" pos="72"/>
+          <note key="36" len="12" vol="100" pan="0" pos="96"/>
+          <note key="36" len="12" vol="100" pan="0" pos="120"/>
+          <note key="47" len="12" vol="100" pan="0" pos="144"/>
+          <note key="36" len="12" vol="100" pan="0" pos="168"/>
+          <note key="36" len="12" vol="100" pan="0" pos="192"/>
+          <note key="47" len="12" vol="100" pan="0" pos="216"/>
+          <note key="36" len="12" vol="100" pan="0" pos="240"/>
+          <note key="36" len="12" vol="100" pan="0" pos="264"/>
+          <note key="47" len="12" vol="100" pan="0" pos="288"/>
+          <note key="36" len="12" vol="100" pan="0" pos="312"/>
+          <note key="47" len="12" vol="100" pan="0" pos="336"/>
+          <note key="36" len="12" vol="100" pan="0" pos="360"/>
+        </pattern>
+        <pattern type="1" muted="0" name="SID" pos="768" steps="16">
+          <note key="47" len="12" vol="100" pan="0" pos="0"/>
+          <note key="36" len="12" vol="100" pan="0" pos="24"/>
+          <note key="36" len="12" vol="100" pan="0" pos="48"/>
+          <note key="47" len="12" vol="100" pan="0" pos="72"/>
+          <note key="36" len="12" vol="100" pan="0" pos="96"/>
+          <note key="36" len="12" vol="100" pan="0" pos="120"/>
+          <note key="47" len="12" vol="100" pan="0" pos="144"/>
+          <note key="36" len="12" vol="100" pan="0" pos="168"/>
+          <note key="36" len="12" vol="100" pan="0" pos="192"/>
+          <note key="47" len="12" vol="100" pan="0" pos="216"/>
+          <note key="36" len="12" vol="100" pan="0" pos="240"/>
+          <note key="36" len="12" vol="100" pan="0" pos="264"/>
+          <note key="47" len="12" vol="100" pan="0" pos="288"/>
+          <note key="36" len="12" vol="100" pan="0" pos="312"/>
+          <note key="47" len="12" vol="100" pan="0" pos="336"/>
+          <note key="36" len="12" vol="100" pan="0" pos="360"/>
+        </pattern>
+        <pattern type="1" muted="0" name="SID" pos="1152" steps="16">
+          <note key="47" len="12" vol="100" pan="0" pos="0"/>
+          <note key="36" len="12" vol="100" pan="0" pos="24"/>
+          <note key="36" len="12" vol="100" pan="0" pos="48"/>
+          <note key="47" len="12" vol="100" pan="0" pos="72"/>
+          <note key="36" len="12" vol="100" pan="0" pos="96"/>
+          <note key="36" len="12" vol="100" pan="0" pos="120"/>
+          <note key="47" len="12" vol="100" pan="0" pos="144"/>
+          <note key="36" len="12" vol="100" pan="0" pos="168"/>
+          <note key="36" len="12" vol="100" pan="0" pos="192"/>
+          <note key="47" len="12" vol="100" pan="0" pos="216"/>
+          <note key="36" len="12" vol="100" pan="0" pos="240"/>
+          <note key="36" len="12" vol="100" pan="0" pos="264"/>
+          <note key="47" len="12" vol="100" pan="0" pos="288"/>
+          <note key="36" len="12" vol="100" pan="0" pos="312"/>
+          <note key="47" len="12" vol="100" pan="0" pos="336"/>
+          <note key="36" len="12" vol="100" pan="0" pos="360"/>
+        </pattern>
       </track>
     </trackcontainer>
     <track solo="0" type="6" muted="0" name="Automation track">
@@ -98,6 +248,11 @@
       <automationpattern mute="0" tens="1" len="192" prog="0" name="Tempo" pos="0"/>
       <automationpattern mute="0" tens="1" len="192" prog="0" name="Master volume" pos="0"/>
       <automationpattern mute="0" tens="1" len="192" prog="0" name="Master pitch" pos="0"/>
+      <automationpattern mute="0" tens="1" len="384" prog="0" name="BitInvader>Panning" pos="0">
+        <time value="-100" pos="0"/>
+        <time value="100" pos="384"/>
+        <object id="7936837"/>
+      </automationpattern>
     </track>
     <fxmixer y="310" minimized="0" x="5" height="324" visible="1" width="543" maximized="0">
       <fxchannel volume="1" muted="0" name="Master" soloed="0" num="0">
@@ -106,7 +261,7 @@
     </fxmixer>
     <ControllerRackView y="310" minimized="0" x="680" height="200" visible="1" width="350" maximized="0"/>
     <pianoroll y="17" minimized="0" x="-191" height="480" visible="0" width="860" maximized="1"/>
-    <automationeditor y="1" minimized="0" x="1" height="400" visible="0" width="860" maximized="0"/>
+    <automationeditor y="47" minimized="0" x="-119" height="400" visible="0" width="860" maximized="1"/>
     <projectnotes y="10" minimized="0" x="700" height="400" visible="0" width="640" maximized="0"><![CDATA[<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
 <html><head><meta name="qrichtext" content="1" /><style type="text/css">
 p, li { white-space: pre-wrap; }
