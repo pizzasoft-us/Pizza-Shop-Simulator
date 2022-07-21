@@ -227,6 +227,10 @@ class MainActivity extends FlxState
 		revenueIndicator.screenCenter(X);
 		revenueIndicator.x += revenueIndicator.width;
 		add(revenueIndicator);
+
+		// Main.menuMusic.pause();
+		// Main.kitchenMusic.play();
+		FlxG.sound.playMusic(Resources.BusyCity__wav, 3 * SessionStorage.volume);
 	}
 
 	public override function update(dt:Float)

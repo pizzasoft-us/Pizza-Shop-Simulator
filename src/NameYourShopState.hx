@@ -80,6 +80,9 @@ class NameYourShopState extends FlxState
 		volumeLabel = new FlxText(0, 0, 0, "Volume %").setFormat(Reference.FONT, 16, 0xFFFFFFFF, CENTER);
 		volumeLabel.y = volumeField.y - volumeLabel.height;
 		add(volumeLabel);
+
+		// Main.kitchenMusic.pause();
+		// Main.menuMusic.resume();
 	}
 
 	public override function update(dt:Float)

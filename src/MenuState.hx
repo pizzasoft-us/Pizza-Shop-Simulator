@@ -38,6 +38,8 @@ class MenuState extends FlxState
 		playButton = new FlxText(0, 0, 0, "Play!").setFormat(Reference.FONT, 96, FlxColor.fromInt(0xFFFFFFFF), FlxTextAlign.CENTER);
 		playButton.screenCenter(XY);
 		add(playButton);
+
+		FlxG.sound.playMusic(Resources.newmenutheme__wav, 0.25 * SessionStorage.volume);
 	}
 
 	override public function update(elapsed:Float)
