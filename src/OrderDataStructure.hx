@@ -3,5 +3,6 @@ package;
 typedef OrderDataStructure =
 {
 	customerName:String,
-	topping:Toppings
+	topping:Toppings,
+	tip:Int
 }

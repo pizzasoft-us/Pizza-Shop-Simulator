@@ -116,8 +116,9 @@ class MainActivity extends FlxState
 		else
 		{
 			order = {
-				customerName: Names.getNames()[Random.int(0, Names.getNames().length)],
-				topping: Toppings.PEPPERONI
+				customerName: Names.getNames()[Random.int(0, Names.getNames().length - 1)],
+				topping: Toppings.PEPPERONI,
+				tip: 0
 			}
 		}
 
@@ -367,6 +368,7 @@ class MainActivity extends FlxState
 			{
 				SessionStorage.totalSales++;
 				SessionStorage.totalRevenue += SessionStorage.cheesePizzaPrice;
+				SessionStorage.totalRevenue += order.tip;
 				if (order.topping == PEPPERONI)
 				{
 					SessionStorage.totalRevenue += SessionStorage.pricePerTopping;
