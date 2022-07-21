@@ -176,7 +176,6 @@ class MainActivity extends FlxState
 
 		currentPizza.base = new FlxSprite();
 		currentPizza.base.screenCenter(XY);
-		currentPizza.base.scale.set(4, 4);
 		currentPizza.base.visible = false;
 		add(currentPizza.base);
 		oven = new FlxSprite(0, 0, Resources.ovenresized_0__png);
@@ -295,7 +294,6 @@ class MainActivity extends FlxState
 			if (!pizzaInOven && !freezeWorkspace && lastIngredientAdded == CHEESE)
 			{
 				// currentPizza.topping = new FlxSprite(0, 0, Resources.UncookedPepperoni__png);
-				currentPizza.topping.scale.set(4, 4);
 				currentPizza.topping.screenCenter(XY);
 				currentPizza.topping.x += 48;
 				currentPizza.topping.y += 32;
@@ -312,7 +310,9 @@ class MainActivity extends FlxState
 		{
 			if (currentPizza.meta.composition.contains(DOUGH)
 				&& currentPizza.meta.composition.contains(SAUCE)
-				&& currentPizza.meta.composition.contains(CHEESE))
+				&& currentPizza.meta.composition.contains(CHEESE)
+				&& !pizzaInOven
+				&& !freezeWorkspace)
 			{
 				// currentPizza.base.visible = false;
 				// currentPizza.topping.visible = false;
