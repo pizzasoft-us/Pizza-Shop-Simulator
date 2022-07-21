@@ -4,6 +4,7 @@ typedef SessionDataStorageFileStructure =
 {
 	version:Int,
 	tutorialFinished:Bool,
+	volume:Float,
 	shop:
 	{
 		name:String, basePrice:Float, toppingPrice:Float

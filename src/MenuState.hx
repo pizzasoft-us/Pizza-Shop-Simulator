@@ -1,5 +1,6 @@
 package;
 
+import engine.SessionStorage;
 import engine.Resources;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -50,6 +51,7 @@ class MenuState extends FlxState
 			playButton.color = FlxColor.fromInt(0xFF000000);
 			if (FlxG.mouse.justPressed)
 			{
+				FlxG.sound.play(Resources.Plop__wav, 0.5 * SessionStorage.volume);
 				playButton.color = FlxColor.fromInt(0xFF7F7F7F);
 				FlxG.switchState(new NameYourShopState(false));
 			}

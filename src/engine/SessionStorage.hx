@@ -18,12 +18,14 @@ class SessionStorage
 	public static var tutorialCompleted:Bool = false;
 	public static var cheesePizzaPrice:Float = 16.0;
 	public static var pricePerTopping:Float = 4.0;
+	public static var volume:Float = 1.0;
 
 	public static function initJSONStorage()
 	{
 		var jsonData = Json.stringify({
 			version: 1,
 			tutorialFinished: tutorialCompleted,
+			volume: volume,
 			shop: {
 				name: shopName,
 				basePrice: cheesePizzaPrice,
@@ -65,6 +67,7 @@ class SessionStorage
 		tutorialCompleted = json.tutorialFinished;
 		cheesePizzaPrice = json.shop.basePrice;
 		pricePerTopping = json.shop.toppingPrice;
+		volume = json.volume;
 		if (shopName == "")
 		{
 			trace("Data loaded however it is empty");
@@ -83,7 +86,9 @@ class SessionStorage
 		var fp = Path.join([System.applicationStorageDirectory, "data.json"]);
 		#if sys
 		var json = Json.stringify({
+			version: 1,
 			tutorialFinished: tutorialCompleted,
+			volume: volume,
 			shop: {
 				name: shopName,
 				basePrice: cheesePizzaPrice,

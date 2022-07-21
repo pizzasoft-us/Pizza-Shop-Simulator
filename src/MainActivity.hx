@@ -257,6 +257,7 @@ class MainActivity extends FlxState
 				tutorialArrow.y = sauceIcon.y;
 				currentPizza.meta.composition.push(DOUGH);
 				lastIngredientAdded = DOUGH;
+				FlxG.sound.play(Resources.Plop__wav, 0.5 * SessionStorage.volume);
 			}
 		}
 
@@ -270,6 +271,7 @@ class MainActivity extends FlxState
 				tutorialArrow.y = cheeseIcon.y;
 				currentPizza.meta.composition.push(SAUCE);
 				lastIngredientAdded = SAUCE;
+				FlxG.sound.play(Resources.Plop__wav, 0.5 * SessionStorage.volume);
 			}
 		}
 
@@ -284,6 +286,7 @@ class MainActivity extends FlxState
 				currentPizza.meta.topping = NONE;
 				currentPizza.meta.composition.push(CHEESE);
 				lastIngredientAdded = CHEESE;
+				FlxG.sound.play(Resources.Plop__wav, 0.5 * SessionStorage.volume);
 			}
 		}
 
@@ -301,6 +304,7 @@ class MainActivity extends FlxState
 				dragHereHint.text = "Now move your pizza to the oven by clicking on it";
 				dragHereHint.screenCenter(X);
 				currentPizza.meta.topping = PEPPERONI;
+				FlxG.sound.play(Resources.Plop__wav, 0.5 * SessionStorage.volume);
 			}
 		}
 
@@ -324,6 +328,7 @@ class MainActivity extends FlxState
 				currentPizza.base.visible = false;
 				currentPizza.topping.visible = false;
 				freezeWorkspace = true;
+				FlxG.sound.play(Resources.Plop__wav, 0.5 * SessionStorage.volume);
 			}
 		}
 
@@ -358,6 +363,7 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(finishTutorialButton) && FlxG.mouse.justPressed)
 		{
+			FlxG.sound.play(Resources.Plop__wav, 0.5 * SessionStorage.volume);
 			finishTutorialButton.visible = false;
 			if (!SessionStorage.tutorialCompleted)
 			{
@@ -385,6 +391,7 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(acceptOrderFeedbackButton) && FlxG.mouse.justPressed)
 		{
+			FlxG.sound.play(Resources.Plop__wav, 0.5 * SessionStorage.volume);
 			FlxG.switchState(new NameYourShopState(false));
 		}
 	}

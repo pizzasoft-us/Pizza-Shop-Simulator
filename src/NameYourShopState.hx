@@ -1,5 +1,6 @@
 package;
 
+import flixel.addons.ui.FlxSlider;
 import engine.SessionStorage;
 import flixel.FlxG;
 import flixel.FlxState;
@@ -20,6 +21,9 @@ class NameYourShopState extends FlxState
 	static var toppingPriceField:FlxInputText;
 
 	static var bypass:Bool = false;
+
+	static var volumeField:FlxInputText;
+	static var volumeLabel:FlxText;
 
 	public function new(bp:Bool)
 	{
@@ -69,11 +73,20 @@ class NameYourShopState extends FlxState
 		toppingPriceField.y = toppingPriceText.y + toppingPriceField.height;
 		toppingPriceField.x = toppingPriceText.x;
 		add(toppingPriceField);
+
+		volumeField = new FlxInputText(0, 0, 150, "100", 32);
+		volumeField.y = FlxG.height - volumeField.height;
+		add(volumeField);
+		volumeLabel = new FlxText(0, 0, 0, "Volume %").setFormat(Reference.FONT, 16, 0xFFFFFFFF, CENTER);
+		volumeLabel.y = volumeField.y - volumeLabel.height;
+		add(volumeLabel);
 	}
 
 	public override function update(dt:Float)
 	{
 		super.update(dt);
+
+		SessionStorage.volume = Std.parseInt(volumeField.textField.text) / 100;
 
 		if (FlxG.mouse.overlaps(nextButton))
 		{
