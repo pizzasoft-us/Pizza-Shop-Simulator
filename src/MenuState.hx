@@ -24,6 +24,8 @@ class MenuState extends FlxState
 	{
 		super.create();
 
+		FlxG.mouse.useSystemCursor = true;
+
 		background = new FlxSprite();
 		background.makeGraphic(FlxG.width, FlxG.height, FlxColor.fromInt(0xFFFFFFFF));
 		background.screenCenter(XY);
@@ -39,7 +41,7 @@ class MenuState extends FlxState
 		playButton.screenCenter(XY);
 		add(playButton);
 
-		FlxG.sound.playMusic(Resources.newmenutheme__wav, 0.25 * SessionStorage.volume);
+		FlxG.sound.playMusic(Resources.newmenutheme__wav, 1 * SessionStorage.volume);
 	}
 
 	override public function update(elapsed:Float)
@@ -55,7 +57,11 @@ class MenuState extends FlxState
 			{
 				FlxG.sound.play(Resources.Plop__wav, 0.5 * SessionStorage.volume);
 				playButton.color = FlxColor.fromInt(0xFF7F7F7F);
-				FlxG.switchState(new NameYourShopState(false));
+				if (SessionStorage.shopName == null || SessionStorage.shopName == "Click here to type") {
+					FlxG.switchState(new NameYourShopState(false));
+				} else {
+					FlxG.switchState(new MainActivity());
+				}
 			}
 		}
 		else

@@ -36,7 +36,7 @@ class NameYourShopState extends FlxState
 		super.create();
 
 		SessionStorage.loadDataFromJSON();
-		if (SessionStorage.shopName != "" && !bypass)
+		if (SessionStorage.shopName != "" && bypass)
 		{
 			FlxG.switchState(new MainActivity());
 		}

@@ -230,7 +230,7 @@ class MainActivity extends FlxState
 
 		// Main.menuMusic.pause();
 		// Main.kitchenMusic.play();
-		FlxG.sound.playMusic(Resources.BusyCity__wav, 3 * SessionStorage.volume);
+		Main.playMainMusic();
 	}
 
 	public override function update(dt:Float)
@@ -246,7 +246,7 @@ class MainActivity extends FlxState
 
 		if (FlxG.mouse.overlaps(titleText) && FlxG.mouse.justPressed)
 		{
-			FlxG.switchState(new NameYourShopState(true));
+			FlxG.switchState(new NameYourShopState(false));
 		}
 
 		if (FlxG.mouse.overlaps(doughIcon) && FlxG.mouse.justPressed)
@@ -384,7 +384,7 @@ class MainActivity extends FlxState
 					SessionStorage.totalRevenue += SessionStorage.pricePerTopping;
 				}
 				SessionStorage.saveDataToJSON();
-				FlxG.switchState(new NameYourShopState(false));
+				FlxG.switchState(new MainActivity());
 			}
 			else
 			{
@@ -396,7 +396,7 @@ class MainActivity extends FlxState
 		if (FlxG.mouse.overlaps(acceptOrderFeedbackButton) && FlxG.mouse.justPressed)
 		{
 			FlxG.sound.play(Resources.Plop__wav, 0.5 * SessionStorage.volume);
-			FlxG.switchState(new NameYourShopState(false));
+			FlxG.switchState(new MainActivity());
 		}
 	}
 }

@@ -42,6 +42,7 @@ class SessionStorage
 			}
 		});
 		var fp = Path.join([System.applicationStorageDirectory, "data.json"]);
+		trace(fp);
 		#if sys
 		if (!FileSystem.exists(fp))
 		{
